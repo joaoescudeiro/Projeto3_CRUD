@@ -34,3 +34,36 @@ void cadastrarProduto() {
 
     printf("Produto cadastrado.\n");
 }
+
+void registrarEntrada() {
+    int codigo, quantidade;
+    printf("Digite o codigo do produto para entrada: ");
+    scanf("%d", &codigo);
+    printf("Quantidade a adicionar: ");
+    scanf("%d", &quantidade);
+
+    FILE *arquivo = fopen("estoque.dat", "rb+");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo");
+        return;
+    }
+
+    Produto p;
+    int encontrado = 0;
+    while (fread(&p, sizeof(Produto), 1, arquivo)) {
+        if (p.codigo == codigo) {
+            p.quantidade += quantidade;
+            fseek(arquivo, -sizeof(Produto), SEEK_CUR);
+            fwrite(&p, sizeof(Produto), 1, arquivo);
+            encontrado = 1;
+            printf("Entrada registrada.\n");
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Produto nao encontrado.\n");
+    }
+
+    fclose(arquivo);
+}

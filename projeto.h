@@ -11,3 +11,4 @@ typedef struct {
 } Produto;
 
 void cadastrarProduto();
+void registrarEntrada();

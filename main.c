@@ -6,6 +6,7 @@ int main() {
     do {
         printf("\nEstoque de supermercado\n");
         printf("1 - Cadastrar Produto\n");
+        printf("2 - Registrar Entrada / Compra\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -14,6 +15,9 @@ int main() {
         switch (opcao) {
             case 1:
                 cadastrarProduto();
+                break;
+            case 2:
+                registrarEntrada();
                 break;
             case 0:
                 printf("Encerrando...\n");

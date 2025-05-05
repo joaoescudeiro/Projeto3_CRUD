@@ -56,7 +56,44 @@ void registrarEntrada() {
             fseek(arquivo, -sizeof(Produto), SEEK_CUR);
             fwrite(&p, sizeof(Produto), 1, arquivo);
             encontrado = 1;
-            printf("Entrada registrada.\n");
+            printf("Entrada de produto registrada.\n");
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Produto nao encontrado.\n");
+    }
+
+    fclose(arquivo);
+}
+
+void registrarSaida() {
+    int codigo, quantidade;
+    printf("Digite o codigo do produto para saida: ");
+    scanf("%d", &codigo);
+    printf("Quantidade a remover: ");
+    scanf("%d", &quantidade);
+
+    FILE *arquivo = fopen("estoque.dat", "rb+");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo");
+        return;
+    }
+
+    Produto p;
+    int encontrado = 0;
+    while (fread(&p, sizeof(Produto), 1, arquivo)) {
+        if (p.codigo == codigo) {
+            if (p.quantidade >= quantidade) {
+                p.quantidade -= quantidade;
+                fseek(arquivo, -sizeof(Produto), SEEK_CUR);
+                fwrite(&p, sizeof(Produto), 1, arquivo);
+                printf("Saida de produto registrada.\n");
+            } else {
+                printf("Quantidade insuficiente no estoque.\n");
+            }
+            encontrado = 1;
             break;
         }
     }

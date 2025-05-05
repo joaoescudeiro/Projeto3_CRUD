@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "produto.h"
+#include "projeto.h"
 
 int main() {
     int opcao;

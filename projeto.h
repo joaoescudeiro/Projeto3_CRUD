@@ -9,3 +9,5 @@ typedef struct {
     int quantidade;
     float preco;
 } Produto;
+
+void cadastrarProduto();

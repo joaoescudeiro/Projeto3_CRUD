@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "produto.h"
+#include "projeto.h"
 
 void cadastrarProduto() {
     Produto p;
@@ -26,7 +26,7 @@ void cadastrarProduto() {
     printf("Quantidade: ");
     scanf("%d", &p.quantidade);
 
-    printf("Preço unitario: ");
+    printf("Preco unitario: ");
     scanf("%f", &p.preco);
 
     fwrite(&p, sizeof(Produto), 1, arquivo);

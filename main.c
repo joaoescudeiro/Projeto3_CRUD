@@ -8,6 +8,7 @@ int main() {
         printf("1 - Cadastrar Produto\n");
         printf("2 - Registrar Entrada / Compra\n");
         printf("3 - Registrar Saida / Venda\n");
+        printf("4 - Consultar por Codigo\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -22,6 +23,9 @@ int main() {
                 break;
             case 3:
                 registrarSaida();
+                break;
+            case 4:
+                consultarProdutoCodigo();
                 break;
             case 0:
                 printf("Encerrando...\n");

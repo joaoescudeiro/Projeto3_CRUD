@@ -104,3 +104,36 @@ void registrarSaida() {
 
     fclose(arquivo);
 }
+
+void consultarProdutoCodigo() {
+    int codigo;
+    printf("Digite o codigo do produto: ");
+    scanf("%d", &codigo);
+
+    FILE *arquivo = fopen("estoque.dat", "rb");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo");
+        return;
+    }
+
+    Produto p;
+    int encontrado = 0;
+
+    while (fread(&p, sizeof(Produto), 1, arquivo)) {
+        if (p.codigo == codigo) {
+            printf("\nProduto encontrado:\n");
+            printf("Nome: %s\n", p.nome);
+            printf("Descricao: %s\n", p.descricao);
+            printf("Quantidade: %d\n", p.quantidade);
+            printf("Preco: R$ %.2f\n", p.preco);
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Produto com codigo %d nao encontrado.\n", codigo);
+    }
+
+    fclose(arquivo);
+}

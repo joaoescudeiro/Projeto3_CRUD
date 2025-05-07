@@ -1,7 +1,7 @@
 # Projeto3_CRUD
 
 João Vitor Alves Escudeiro 24.224.010-9 \
-Felipe Pellizzari Vaz Gabriel 24.224.005-9\
+Felipe Pellizzari Vaz Gabriel 24.224.005-9
 
 ## Objetivo do projeto
 

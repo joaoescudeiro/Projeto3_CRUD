@@ -3,8 +3,8 @@ Relatorio de Estoque do Supermercado
 Codigo     Nome                           Quantidade Preço Total   
 ----------------------------------------------------------------
 1          Agua                           64         R$ 320.00       
-2          Arroz                          32         R$ 320.00       
-3          Feijao                         20         R$ 240.00       
+2          Arroz                          37         R$ 370.00       
+3          Feijao                         16         R$ 192.00       
 4          Sal                            36         R$ 216.00       
 5          Acucar                         24         R$ 168.00       
 6          Farinha                        15         R$ 180.00       

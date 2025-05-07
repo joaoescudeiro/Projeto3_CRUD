@@ -137,3 +137,37 @@ void consultarProdutoCodigo() {
 
     fclose(arquivo);
 }
+
+void consultarProdutoNome() {
+    char nomeBusca[50];
+    printf("Digite o nome do produto: ");
+    fgets(nomeBusca, sizeof(nomeBusca), stdin);
+    nomeBusca[strcspn(nomeBusca, "\n")] = '\0';
+
+    FILE *arquivo = fopen("estoque.dat", "rb");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo");
+        return;
+    }
+
+    Produto p;
+    int encontrado = 0;
+
+    while (fread(&p, sizeof(Produto), 1, arquivo)) {
+        if (strcasecmp(p.nome, nomeBusca) == 0) {
+            printf("\nProduto encontrado:\n");
+            printf("Codigo: %d\n", p.codigo);
+            printf("Descricao: %s\n", p.descricao);
+            printf("Quantidade: %d\n", p.quantidade);
+            printf("Preco: R$ %.2f\n", p.preco);
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Produto com nome digitado nao encontrado.\n");
+    }
+
+    fclose(arquivo);
+}

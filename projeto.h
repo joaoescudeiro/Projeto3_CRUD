@@ -14,3 +14,4 @@ void cadastrarProduto();
 void registrarEntrada();
 void registrarSaida();
 void consultarProdutoCodigo();
+void consultarProdutoNome();

@@ -15,3 +15,4 @@ void registrarEntrada();
 void registrarSaida();
 void consultarProdutoCodigo();
 void consultarProdutoNome();
+void gerarRelatorio();

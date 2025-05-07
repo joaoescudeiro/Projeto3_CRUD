@@ -10,6 +10,7 @@ int main() {
         printf("3 - Registrar Saida / Venda\n");
         printf("4 - Consultar por Codigo\n");
         printf("5 - Consultar por Nome\n");
+        printf("6 - Gerar Relatorio de Estoque\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -30,6 +31,9 @@ int main() {
                 break;
             case 5:
                 consultarProdutoNome();
+                break;
+            case 6:
+                gerarRelatorio();
                 break;
             case 0:
                 printf("Encerrando...\n");

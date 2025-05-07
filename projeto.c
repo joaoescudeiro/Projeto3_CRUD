@@ -171,3 +171,33 @@ void consultarProdutoNome() {
 
     fclose(arquivo);
 }
+
+void gerarRelatorio() {
+    FILE *arquivo = fopen("estoque.dat", "rb");
+    if (!arquivo) {
+        perror("Erro ao abrir o arquivo de estoque");
+        return;
+    }
+
+    FILE *relatorio = fopen("relatorio_estoque.txt", "w");
+    if (!relatorio) {
+        perror("Erro ao criar o arquivo de relatorio");
+        fclose(arquivo);
+        return;
+    }
+
+    Produto p;
+    fprintf(relatorio, "Relatorio de Estoque do Supermercado\n\n");
+    fprintf(relatorio, "%-10s %-30s %-10s %-15s\n", "Codigo", "Nome", "Quantidade", "Preço Total");
+    fprintf(relatorio, "----------------------------------------------------------------\n");
+
+    while (fread(&p, sizeof(Produto), 1, arquivo)) {
+        float precoTotal = p.quantidade * p.preco;
+        fprintf(relatorio, "%-10d %-30s %-10d R$ %-13.2f\n", p.codigo, p.nome, p.quantidade, precoTotal);
+    }
+
+    fclose(arquivo);
+    fclose(relatorio);
+
+    printf("Relatorio de estoque gerado.\n");
+}
